@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: red;
+            width: 300px;
+            height: 200px;
+        }
+        button{
+            width: 110px;
+            height: 20px;
+            margin: 6px;
+        }
+    </style>
+</head>
+<body id="degerdegerid" onload="renk()">
+    <div id="myid" onclick="mesajver()"><button id="degerid" onclick="saga()"> Click me <span onclick="renklendir()"> Hello </span> </button></div>
+    <script>
+        let id  = document.getElementById("myid")
+        let id2 = document.getElementById("degerid")
+        let id3 = document.getElementById("degerdegerid")
+        var clickcounter=0;
+        function renklendir(){
+            id2.style.color = "blue"
+        }
+        function mesajver(){
+            alert("mesaj verildi")
+        }
+        function saga(){
+            clickcounter++;
+            if(clickcounter % 2 == 1){
+            id2.style.position = "fixed"
+            id2.style.left = "184px"
+            }
+            else{
+            id2.style.position = "fixed"
+            id2.style.left = "8px"
+            }
+        }
+        function sol(){
+            id4.style.position = "fixed"
+            id4.style.left = "80px"
+        }
+        function renk(){
+            id3.style.backgroundColor = "aqua"
+        }
+    </script>
+</body>
+</html>

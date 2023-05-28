@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button{
+        background-color: firebrick;
+        color: white;
+    }
+    table,tr,td{
+        border: 2px solid black;
+        border-collapse: collapse;
+        margin: 5px;
+        padding: 2px;
+    }
+    tr td{
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
+
+</style>
+<body>
+    <fieldset>
+        <legend>Hesap Makinesi</legend>
+        <table border="8">
+            <tr>
+                <td colspan="4" style="background-color: white;" id="sonuc" ></td>
+                <td rowspan="5"><button style="height: 130px;" value="=" onclick="sonsonuc()">=</button></td>
+            </tr>
+            <tr>
+                <td><button value="7" onclick="writethenumber('7')">7</button></td>
+                <td><button value="8" onclick="writethenumber('8')">8</button></td>
+                <td><button value="9" onclick="writethenumber('9')">9</button></td>
+                <td><button value="/" onclick="writethenumber('/')">/</button></td>
+            </tr>
+            <tr>
+                <td><button value="4" onclick="writethenumber('4')">4</button></td>
+                <td><button value="5" onclick="writethenumber('5')">5</button></td>
+                <td><button value="6" onclick="writethenumber('6')">6</button></td>
+                <td><button value="*" onclick="writethenumber('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button value="1" onclick="writethenumber('1')"> 1</button></td>
+                <td><button value="2" onclick="writethenumber('2')">2</button></td>
+                <td><button value="3" onclick="writethenumber('3')">3</button></td>
+                <td><button value="-" onclick="writethenumber('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button value="0" onclick="writethenumber('0')">0</button></td>
+                <td><button name="t" value="temizle" onclick="ClearEverything()">T</button></td>
+                <td><button value="." onclick="writethenumber('.')">.</button></td>
+                <td><button value="+" onclick="writethenumber('+')">+</button></td>
+
+            </tr>
+        </table>
+    </fieldset>
+</body>
+<script>
+    function ClearEverything(){
+         document.getElementById("sonuc").innerHTML = ''; 
+    }
+    function writethenumber(value){
+        document.getElementById("sonuc").innerHTML += value;
+    }
+    function sonsonuc(){
+        var display=document.getElementById('sonuc').innerHTML;
+        var cevap = eval(display);
+        if(display == false){
+            alert("Empty input Please Enter Valid Number")
+        }       
+        document.getElementById('sonuc').innerHTML = cevap;
+    }
+</script>
+</html>

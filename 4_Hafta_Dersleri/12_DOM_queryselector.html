@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Paragarf içindeki belli bir alt_document'e değişiklik yapma</h1>
+    <p id="myid">
+        burda bir span<span class="mavi"> span var</span><br>
+        <span>Burda da değişecek </span> span içindeki değişti
+    </p>
+    <p >
+        burda bir span<span class="mavi"> span var</span><br>
+        <span>Burda da değişecek </span> span içindeki değişti
+    </p>
+    <span class="mavi">Burası Değişmez çünkü id'sı "myid" olan içinde değil </span>
+    <script>
+        let spanlar_icindeki_classlar = document.querySelectorAll("p>.mavi")
+        Array.from(spanlar_icindeki_classlar).forEach((classes) => {
+            classes.innerHTML = " Burasi baskaerrrrrrrrrrrrrrrrrrr bisey oldu "
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>JavaScript HTML Events Direkten Yazma</h2>
+    <h2 onclick="this.innerHTML='Ooops!'" style="border: 2px solid black;width: 400px;">Click on this text!</h2>
+    <hr>
+    <h2 id="degerid" style="border: 2px solid red;width: 400px;">Click on this text!</h2>
+    <hr>
+    <button onclick="rnd()">Click it to Create a random number</button>
+    <p id="myid">Empty</p>
+    <hr>
+    <button onclick="alertt()" id="submit">Submit</button>
+    <hr>
+    <p>Please input a number between 1 and 10:</p>
+
+    <input id="numb">
+
+    <button type="submit" onclick="myFunction()">Submit</button>
+
+    <p id="demo">merhaba</p>
+    <script>
+        let id = document.getElementById("myid")
+        function rnd(){
+            let randomnum = Math.trunc(Math.random() * 10)
+            return id.innerHTML = randomnum
+        }
+        function alertt() {
+            alert("Your ansewrs ara Submitted")
+        }
+        function myFunction() {
+            // Get the value of the input field with id="numb"
+            let x = document.getElementById("numb").value;
+            // If x is Not a Number or less than one or greater than 10
+            let text;
+            if (isNaN(x) || x < 1 || x > 10) {
+                text = "Input not valid";
+            } else {
+                text = "Input OK";
+            }
+            document.getElementById("demo").innerHTML = text;
+        }
+        document.getElementById("degerid").onclick = alertt;
+    </script>
+</body> 
+</html>

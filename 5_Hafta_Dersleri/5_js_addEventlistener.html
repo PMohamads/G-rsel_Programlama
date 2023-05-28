@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world </h1>
+    <p style="border: 2px solid red;width: 200px;font-size: 15pt;" id="myid">click in here</p>
+    <script>
+        function alertt(){
+            alert("You click it")
+        }
+        function alertt2(){
+            alert("The page is Resized")
+        }
+        document.getElementById("myid").addEventListener("click",alertt)
+        window.addEventListener("resize",alertt2)
+    </script>
+</body>
+</html>

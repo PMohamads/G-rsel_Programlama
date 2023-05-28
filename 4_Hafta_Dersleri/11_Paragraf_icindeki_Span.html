@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Paragarf içindeki belli bir alt_document'e değişiklik yapma</h1>
+    <p id="myid">
+        burda bir span<span> span var</span><br>
+        <span>Burda da değişecek </span> span içindeki değişti
+    </p>
+    <span class="sari">Burası Değişmez çünkü id'sı "myid" olan içinde değil </span>
+    <form action="" method="get"><P>
+        adiniz : <input type="text" placeholder="AD" class="sari"><br>
+        Soyadiniz : <input type="text" placeholder="SOYAD"><br>
+        <input type="submit"><br>
+        <input type="reset" class="sari"><br>
+        <input type="password" class="sari"></P>
+    </form>
+    <script>
+        let id = document.getElementById("myid")
+        let alt_document = id.getElementsByTagName("span")
+        Array.from(alt_document).forEach((sspann) => {
+            sspann.innerHTML=" span içerikleri Değişti"
+            sspann.style.color = "red"
+        })  
+        let classes = document.querySelectorAll("p>.sari")
+        Array.from(classes).forEach((farketmez) => {
+        farketmez.style.color = "yellow";
+        })
+    </script>
+</body>
+</html>       

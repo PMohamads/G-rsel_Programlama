@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="baslik">Başlık</h1>
+    <p class="green">Bu da paragraf yeşil yazılı</p>
+    <p>Burası da paragraf</p>
+    <hr>
+    <span class="green">Yeşil yazı</span>
+    <p>Paragraflar tags diye bilinir</p>
+    <!--
+        document.getElementById(id)	Find an element by element id
+        document.getElementsByTagName(name)	Find elements by tag name
+        document.getElementsByClassName(name)	Find elements by class name
+    -->
+    <script>
+        let id = document.getElementById("baslik").innerHTML = "Bu başlık Değişti"
+        let tags = document.getElementsByTagName("p")
+        let classes = document.getElementsByClassName("green")
+        console.log(id);
+        console.log(tags);
+        console.log(classes);   
+        Array.from(tags).forEach((tek_paragraf) => {
+            tek_paragraf.innerHTML = "Her paragraf burda değişti"
+            tek_paragraf.style.color = "blue"
+        })
+        Array.from(classes).forEach((green) => {
+            green.style.color = "green"
+        })
+    </script>
+</body>
+</html>

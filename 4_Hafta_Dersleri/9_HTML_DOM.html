@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;color: red;">Here we are going to start html DOM tags</h1>
+    <p id="myid">Merhaba</p>
+    <h2 style="text-align: center;color: blue;">Burda getElementById (action) turunden innerHTML ise (value) turunden</h2>
+    <p id="kk" onclick="fonk()">dhjk,hgfd</p>
+    <script>
+
+        document.getElementById("myid").innerHTML="Helloo"
+        let ore = document.getElementById("myid")
+        ore.style.position = "fixed"
+        ore.style.right = "15px"
+        ore.style.top = "70px"
+        
+        function fonk(){
+            document.getElementById("kk").innerHTML="Anthor iid"
+            document.getElementById("kk").style.color = "red"
+        }
+
+    </script>
+</body>
+</html>

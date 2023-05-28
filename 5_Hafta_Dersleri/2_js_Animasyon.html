@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 3px solid blue;
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            left: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="myid" ></div>
+    <script>
+        let test = document.getElementById("myid")
+        let uzaklik = 20
+        let carpma_orani = 2
+        setInterval(function(){
+            carpma_orani++
+            test.style.left = (uzaklik * carpma_orani)+ "px"
+            test.style.top  = (uzaklik * carpma_orani)+ "px"
+        },1000) 
+    </script>
+</body>
+</html>
