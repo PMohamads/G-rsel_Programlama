@@ -26,3 +26,5 @@ console.log(degerler)
 degerler.forEach(function (deger){
     console.log(deger)
 })
+
+
