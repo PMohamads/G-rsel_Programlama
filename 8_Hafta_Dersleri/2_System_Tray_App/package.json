@@ -1,0 +1,15 @@
+{
+  "name": "2_system_tray_app",
+  "version": "1.0.0",
+  "description": "New S Tray",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^25.0.0"
+  }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>js</title>
+  </head>
+  <body>
+    <h1 style="color: blue;font-size: larger;text-align: center;font-weight: bold"> to Use EventListener Using JS To open a new Window  </h1>
+    <button id="dugme" onclick="pencereac()">Buraya Tikla</button>
+    <button id="digersayfa" >Press to Go to the another Page</button><br><br>
+    Title: <input id="title"/>
+    <button id="btn" type="button">Set</button>
+    <script src="./renderer.js"></script>
+    <script>
+      
+      // You can also require other files to run in this process
+      let dugme = document.getElementById("dugme")
+       pencereac = () => {
+        dugme.innerHTML = Date()
+           }    
+    </script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
