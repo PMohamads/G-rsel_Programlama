@@ -1,15 +1,16 @@
 {
-  "name": "9_hafta_derleri",
+  "name": "SQL By Elektron",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Stok Takipi",
+  "main": "main.js",
   "scripts": {
-    "start": "elektron .",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^25.0.1"
+    "electron": "^25.0.1",
+    "mysql": "^2.18.1"
   }
 }
