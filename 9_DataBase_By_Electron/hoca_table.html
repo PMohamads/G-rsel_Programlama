@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" contSent="script-src 'self' 'unsafe-inline';" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<style>
+    /* Option 2: Import via CSS */
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+    #btn{
+        color: red;
+        background-color: blue;
+        font-weight: bolder;
+        font-size: larger;
+        border: 3px solid black;
+        padding: 15px;
+        padding-left: 140px;
+        padding-right: 140px;
+        margin-left: 800px;
+    }
+</style>
+<body>
+    <h1>Hello World!</h1>
+    <h2>Kayit Ekleme</h2>
+    <form>
+    <div class="mb-3">
+        <label class="form-label">Ürün Adı</label>
+        <input type="text" class="form-control" id="frm_urun_adi">
+      </div>
+      <div class="mb-3">
+          <label class="form-label">Ürün Boyutu</label>
+          <input type="number" class="form-control" id="frm_urun_boyutu">
+      </div>
+      <div class="mb-3">
+          <label class="form-label">Ürün Miktarı</label>
+          <input type="number" class="form-control" id="frm_urun_miktari">
+      </div>
+      <div class="mb-3">
+          <label class="form-label">Ürün Fiyatı</label>
+          <input type="number" class="form-control" id="frm_urun_fiyati">
+      </div>
+      <button type="submit" class="btn btn-primary" id="dgm_kayit_ekle">Ekle</button><hr>
+      <div id="duzenleme_paneli">
+        <button type="submit" class="btn btn-warning" id="dgm_kayit_duzenle">Düzenle</button>
+    </div>
+          <div>
+                <button id="btn">kaydet </button>
+          </div>
+    </form><br><br><br>
+    <hr>
+    <p>Hit Alt+Shift+I on Windows, or Opt+Cmd+I on mac to see a message printed to the console.</p>
+    <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Adı</th>
+            <th scope="col">Boyut</th>
+            <th scope="col">Miktar</th>
+            <th scope="col">Fiyat</th>
+          </tr>
+        </thead>
+        <tbody id="tt">
+          <tr>
+            <th scope="row">1</th>
+            <td>adi1</td>
+            <td>boyut1</td>
+            <td>adet1</td>
+            <td>fiyat1</td>
+            <td>Silenecek1</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>adi2</td>
+            <td>boyut2</td>
+            <td>adet2</td>
+            <td>fiyat2</td>
+            <td>Silenecek2</td>
+          </tr>
+        </tbody>
+        
+    
+      </table>
+      
+    
+</body>
+<script src="baglanti.js"></script>
+<script>
+    let sql = document.getElementById("btn");
+
+
+    function listeleme(){
+        let duzenleme_paneli = document.getElementById("duzenleme_paneli");
+            duzenleme_paneli.style.display = "none";
+
+        let sql = document.getElementById("btn");
+            var kayit_listeleme_alani = document.getElementById("tt");
+            kayit_listeleme_alani.innerHTML="";
+        
+            $query = 'SELECT * FROM `urun`;';
+
+            connection.query($query, function(err, rows, fields) {
+                if(err){
+                    alert("Sorgu Getirirken Olusan Hata");
+                    console.log(err);
+                    return;
+                    }
+                console.log("istenilen Sorgu : ",$query);
+                console.log("Kayitlar : ",rows);
+    
+                rows.forEach(kayitListele);
+
+                function kayitListele(kayit) {
+                    var satir = document.createElement("tr");
+                    var sutun1 = document.createElement("td");
+                    var sutun2 = document.createElement("td");
+                    var sutun3 = document.createElement("td");
+                    var sutun4 = document.createElement("td");
+                    var sutun5 = document.createElement("td");
+                    var sutun6 = document.createElement("td");
+                    sutun1.innerHTML = kayit["id"];
+                    sutun2.innerHTML = kayit["ad"];
+                    sutun3.innerHTML = kayit["boyut"];
+                    sutun4.innerHTML = kayit["miktar"];
+                    sutun5.innerHTML = kayit["fiyat"];
+                    sutun6.innerHTML = '<button class="btn btn-danger" onclick=kayitsil('+kayit["id"]+')><i class="bi bi-trash"></i></button>&nbsp;&nbsp'+'<button class="btn btn-warning" onclick=kayitduzenle('+kayit["id"]+')><i class="bi bi-pen"></i></button>';
+                                                         
+                    satir.appendChild(sutun1);
+                    satir.appendChild(sutun2);
+                    satir.appendChild(sutun3);
+                    satir.appendChild(sutun4);
+                    satir.appendChild(sutun5);
+                    satir.appendChild(sutun6);
+
+                    kayit_listeleme_alani.appendChild(satir);
+                }
+            }
+        )};
+            sql.addEventListener('load',listeleme())
+
+</script>
+<script>
+    let kayit_ekle = document.getElementById("dgm_kayit_ekle")
+    
+    kayit_ekle.addEventListener('click', () => {
+    /*    var mysql = require('mysql');
+    // Add the credentials to access your database
+    var connection = mysql.createConnection({
+        host     : '127.0.0.1',
+        user     : 'root',
+        password : '', // or the original password : 'apaswword'
+        database : 'stok'
+    });
+    connection.connect(function(err) {
+            // in case of error
+            if(err) throw err;
+    });*/
+        let urun_adi = document.getElementById("frm_urun_adi").value;
+        let urun_boyutu = document.getElementById("frm_urun_boyutu").value;
+        let urun_miktari = document.getElementById("frm_urun_miktari").value;
+        let urun_fiyati = document.getElementById("frm_urun_fiyati").value;
+        
+        $query = "INSERT INTO `urun` (`id`, `ad`, `boyut`, `miktar`, `fiyat`)\
+         VALUES (NULL,'"+urun_adi+"', '"+urun_boyutu+"', '"+urun_miktari+"', '"+urun_fiyati+"');";
+        connection.query($query, function(err) {
+            if(err){
+                console.log("Sorgu Getirirken Olusan Hata");
+                console.log(err);
+                return;
+                }
+        })
+        listeleme();
+    });
+</script>
+
+<script>
+    function kayitsil(kayit_nu){
+        $query = " DELETE FROM `urun` WHERE `id`=('"+kayit_nu+"');";
+
+        connection.query($query, function(err) {
+            if(err){
+                console.log("Sorgu Getirirken Olusan Hata");
+                console.log(err);
+                return;
+                }
+        })
+        listeleme();
+    };
+    function kayitduzenle(kayitNo)
+        {
+            $sorgu = 'SELECT * FROM urun WHERE `urun`.`id` = ' + kayitNo;
+
+            connection.query($sorgu, function(hata, kayitlar, alanlar) {
+                if(hata){
+                    console.log("Kayıt düzenlenirken hata :" + hata);
+                    return;
+                }
+                let urun_adi = document.getElementById("frm_urun_adi");
+                let urun_boyutu = document.getElementById("frm_urun_boyutu");
+                let urun_miktari = document.getElementById("frm_urun_miktari");
+                let urun_fiyati = document.getElementById("frm_urun_fiyati");
+                urun_adi.value = kayitlar[0].ad;
+                urun_boyutu.value = kayitlar[0].boyut;
+                urun_miktari.value = kayitlar[0].miktar;
+                urun_fiyati.value = kayitlar[0].fiyat;
+                
+                duzenlenekecekKayit = kayitNo;
+                
+                let duzenleme_paneli = document.getElementById("duzenleme_paneli");
+                duzenleme_paneli.style.display = "block";
+            });
+            
+            dgm_kayit_duzenle.addEventListener("click", function(){
+            event.preventDefault();
+            let urun_adi = document.getElementById("frm_urun_adi").value;
+            let urun_boyutu = document.getElementById("frm_urun_boyutu").value;
+            let urun_miktari = document.getElementById("frm_urun_miktari").value;
+            let urun_fiyati = document.getElementById("frm_urun_fiyati").value;
+            $sorgu = "UPDATE `urun` SET `ad` = '"+urun_adi+"', `boyut` = '"+urun_boyutu+"', `miktar` = '"+urun_miktari+"', `fiyat` = '"+urun_fiyati+"' WHERE `urun`.`id` = "+duzenlenekecekKayit+";";
+            connection.query($sorgu, function(hata) {
+                if(hata){
+                    console.log("Sorgu yapılırken hata.");
+                    console.log(hata);
+                    return;
+                }
+                listeleme();
+            })
+        })
+            
+        }
+</script>
+</html>

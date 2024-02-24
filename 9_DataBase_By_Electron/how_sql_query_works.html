@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<style>
+    button{
+        position: fixed;
+        right: 30%;
+        left: 30%;
+        color: red;
+        background-color: blue;
+        font-weight: bolder;
+        font-size: larger;
+        border: 3px solid black;
+        padding: 15px;
+    }
+</style>
+<body>
+    <h1>Hello World!</h1>
+    <p>Hit Alt+Shift+U on Windows to see a message printed to the console.</p>
+    <button id="btn">Press The Button To Access To The DataBase </button>    
+</body>
+<script>
+    let sql = document.getElementById("btn");
+    sql.addEventListener('click', () => {
+        var mysql = require('mysql');
+
+        // Add the credentials to access your database
+        var connection = mysql.createConnection({
+            host     : '127.0.0.1',
+            user     : 'root',
+            password : '', // or the original password : 'apaswword'
+            database : 'stok'
+        });
+
+        // connect to mysql
+        connection.connect(function(err) {
+            // in case of error
+            if(err) throw err;
+            alert("Hello From sql");
+        });
+        
+    $query = 'SELECT * FROM `urun`'
+
+    connection.query($query, function(err, rows, fields) {
+    if(err){
+        console.log("Sorgu Getirirken Olusan Hata");
+        console.log(err);
+        return;
+        }
+    console.log("istenilen Sorgu : ",$query);
+    console.log("Kayitlar : ",rows);
+    console.log("Kayitlar : ",rows[0]);
+    console.log("Kayitlar : ",rows[0]["adi"]);
+    console.log("Kayitlar : ",rows[1]["adi"]);
+    console.log("Veritabinin Tablosunun Ana alanlar",fields);
+    });
+    connection.end(() => {
+            console.log("connection closed");
+        });
+    },false);
+
+</script>
+</html>
